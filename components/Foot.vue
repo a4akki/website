@@ -9,7 +9,7 @@
           <div class="flex flex-wrap items-center justify-center lg:justify-end mx-0 lg:mx-20">
             <a
               class="inline-block lg:mr-4 mb-4 lg:mb-0 py-2 px-8 text-sm lg:text-base text-white font-medium leading-normal bg-orange-400 hover:bg-orange-600 rounded"
-              href="https://t.me/brokeindian01"
+              href="https://t.me/besodaku"
             >
               Get in Touch
             </a>
