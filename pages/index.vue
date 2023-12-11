@@ -2,8 +2,8 @@
   <div class="bg-black text-white">
     <div class="m-auto p-6">
       <section class="overflow-hidden ">
-        <div class="container px-4 mx-auto">
-          <div class="flex flex-wrap mt-6 -mx-4 mt-40">
+        <div class="container px-4 mx-auto mt-20">
+          <div class="flex flex-wrap mt-6 -mx-4 ">
             <div class="w-full lg:w-1/2 p-4 mt-20">
               <span
                 class="text-5xl text-orange-500 lg:text-6xl font-semibold py-8 mb-6 max-w-sm lg:max-w-md mt-14"
