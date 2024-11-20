@@ -1,0 +1,85 @@
+'use client'
+
+import * as React from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { usePathname } from "next/navigation"
+import { Menu, X } from 'lucide-react'
+
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Projects", href: "/projects" },
+  { name: "Gallery", href: "/gallery" },
+]
+
+export default function Header() {
+  const [isOpen, setIsOpen] = React.useState(false)
+  const pathname = usePathname()
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between">
+        <Link href="/" className="flex items-center space-x-2">
+          <Image
+            src="/placeholder.svg?height=32&width=32"
+            alt="OM NAMO SIWAI Logo"
+            width={32}
+            height={32}
+            className="rounded-full"
+          />
+          <span className="text-xl font-bold">OM NAMO SIWAI</span>
+        </Link>
+        <nav className="hidden md:flex items-center space-x-6">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                pathname === item.href ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Button asChild>
+            <Link href="/contact">Contact Us</Link>
+          </Button>
+        </nav>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <Button variant="outline" size="icon" className="md:hidden">
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Toggle menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right">
+            <div className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                    pathname === item.href ? "text-primary" : "text-muted-foreground"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Button asChild>
+                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  Contact Us
+                </Link>
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </header>
+  )
+}
